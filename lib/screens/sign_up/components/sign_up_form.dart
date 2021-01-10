@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/components/custom_suffix_icon.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/components/form_error.dart';
+import 'package:shop_app/screens/complete_profile/complete_profile_screen.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -56,6 +57,7 @@ class _SignUpFormState extends State<SignUpForm> {
               press: () {
                 if (_formKey.currentState.validate()) {
                   // Go to complete profile page.
+                  Navigator.pushNamed(context, CompleteProfileScreen.routeName);
                 }
               },
             )
@@ -78,7 +80,7 @@ class _SignUpFormState extends State<SignUpForm> {
       validator: (value) {
         if (value.isEmpty) {
           return "";
-        } else if (password != confirmPassword) {
+        } else if (password != value) {
           addError(error: kMatchPassError);
           return "";
         }
